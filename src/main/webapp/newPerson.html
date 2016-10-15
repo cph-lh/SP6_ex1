@@ -1,0 +1,7 @@
+<form ng-submit="ctrl.createPerson()">
+    <h3>Create a new person</h3>
+    <input type="hidden" ng-model="ctrl.newPerson.id = ctrl.persons.length + 1"><br>
+    <input type="text" placeholder="Name" ng-model="ctrl.newPerson.name" required><br>
+    <input type="number" placeholder="Age" ng-model="ctrl.newPerson.age" required><br>
+    <input type="submit" value="Create Person">
+</form>

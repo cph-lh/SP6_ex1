@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+    <head>
+        <title>Exercise 1</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        <script>
+            var app = angular.module("myModule", ["ngRoute"]);
+
+            app.controller("myController", [function() {
+                    var self = this;
+                    self.persons = [
+                        {id: 1, name: "Jens", age: 18}
+                        , {id: 2, name: "Peter", age: 23}
+                        , {id: 3, name: "Hanne", age: 23}
+                    ];
+                    self.title = "Person List";
+                    self.indexNumber = 0;
+                    
+                    self.createPerson = function(){
+                    self.persons.push(self.newPerson); 
+                    self.newPerson = '';
+                    };
+                }]);
+
+            app.config(function ($routeProvider) {
+                $routeProvider
+                        .when("/allPersons", {
+                            templateUrl: "allPersons.html"
+                        })
+                        .when("/newPerson",{
+                           templateUrl:"newPerson.html" 
+                        })
+                        .when("/:id", {
+                            templateUrl: "detail.html"
+                        })
+                        .otherwise("/");
+                    });
+        </script>
+    </head>
+    <body style="font-family: calibri" ng-controller="myController as ctrl">
+        <h3>Exercise 1</h3>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/allPersons">All persons</a></li>
+                    <li><a href="#/newPerson">New person</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div ng-view>
+        </div>
+          
+    </body>
+</html>

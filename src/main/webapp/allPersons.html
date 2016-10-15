@@ -1,0 +1,17 @@
+<div>
+<h3>Person list</h3>
+<table>
+    <thead style="font-weight: bold">
+        <tr>
+            <td>Name</td>
+            <td>Id</td>
+        </tr>  
+    </thead>
+    <tbody>
+        <tr ng-repeat="p in ctrl.persons">
+            <td>{{p.name}}</td>
+            <td style="text-align: center"><a href="#{{p.id}}" ng-click="ctrl.indexNumber = $index">{{p.id}}</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
